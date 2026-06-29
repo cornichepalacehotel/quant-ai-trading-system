@@ -1,21 +1,31 @@
 from binance.client import Client
 import pandas as pd
+from config import *
 
-client = Client()
+client = Client(
+    BINANCE_API_KEY,
+    BINANCE_API_SECRET
+)
 
-def get_data(symbol="BTCUSDT", interval="1m", limit=100):
+def get_data():
 
     klines = client.get_klines(
-        symbol=symbol,
-        interval=interval,
-        limit=limit
+        symbol=SYMBOL,
+        interval=INTERVAL,
+        limit=LIMIT
     )
 
     df = pd.DataFrame(
         klines,
         columns=[
-            "time","open","high","low","close","volume",
-            "close_time","quote_asset_volume",
+            "time",
+            "open",
+            "high",
+            "low",
+            "close",
+            "volume",
+            "close_time",
+            "quote_asset_volume",
             "number_of_trades",
             "taker_buy_base_asset_volume",
             "taker_buy_quote_asset_volume",
@@ -23,6 +33,9 @@ def get_data(symbol="BTCUSDT", interval="1m", limit=100):
         ]
     )
 
-    df["close"] = df["close"].astype(float)
+    numeric = ["open","high","low","close","volume"]
+
+    for col in numeric:
+        df[col] = df[col].astype(float)
 
     return df
