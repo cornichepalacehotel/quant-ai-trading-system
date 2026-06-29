@@ -1,5 +1,8 @@
 python-binance
 pandas
+numpy
 ta
 requests
-numpy
+flask
+tensorflow
+scikit-learn
