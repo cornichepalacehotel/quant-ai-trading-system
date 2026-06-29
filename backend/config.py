@@ -1,1 +1,13 @@
+# Configuration
 
+SYMBOL = "BTCUSDT"
+INTERVAL = "1m"
+LIMIT = 100
+
+# Binance API
+BINANCE_API_KEY = ""
+BINANCE_API_SECRET = ""
+
+# Telegram
+TELEGRAM_BOT_TOKEN = ""
+TELEGRAM_CHAT_ID = ""
