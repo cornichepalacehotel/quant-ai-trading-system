@@ -1,13 +1,8 @@
-import requests
-
 def get_market_news():
-
-    # Placeholder version
-    # API integration will be added later
 
     return [
         {
-            "title": "Bitcoin market update",
+            "title": "Market Stable",
             "sentiment": "NEUTRAL"
         }
     ]
