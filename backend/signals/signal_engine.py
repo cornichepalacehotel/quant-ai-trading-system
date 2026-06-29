@@ -1,17 +1,23 @@
-import pandas as pd
-
 def generate_signal(df):
 
-    if len(df) < 2:
-        return "HOLD"
+    last = df.iloc[-1]
 
-    last = df["close"].iloc[-1]
-    previous = df["close"].iloc[-2]
+    buy = (
+        last["ema20"] > last["ema50"]
+        and last["macd"] > last["macd_signal"]
+        and last["rsi"] < 70
+    )
 
-    if last > previous:
+    sell = (
+        last["ema20"] < last["ema50"]
+        and last["macd"] < last["macd_signal"]
+        and last["rsi"] > 30
+    )
+
+    if buy:
         return "BUY"
 
-    elif last < previous:
+    if sell:
         return "SELL"
 
     return "HOLD"
