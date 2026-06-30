@@ -4,5 +4,6 @@ numpy
 ta
 requests
 flask
+python-dotenv
 tensorflow
 scikit-learn
